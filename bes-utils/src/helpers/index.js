@@ -1,5 +1,5 @@
 var path = require('path');
-var root = path.dirname(__dirname);
+var root = path.dirname(require.main.filename);
 
 function helpers() {
     return {
