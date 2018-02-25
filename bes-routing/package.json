@@ -1,6 +1,6 @@
 {
   "name": "bes-routing",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Routing for bes",
   "main": "src/index.js",
   "scripts": {
@@ -16,6 +16,7 @@
   "author": "John Conrad Lumacad <johnconradl18@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "bes-utils": "^1.0.0",
     "lodash": "^4.17.5"
   }
 }
