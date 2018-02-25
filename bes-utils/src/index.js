@@ -1,9 +1,7 @@
 var helpers = require('./helpers');
 
-function utils() {
-    return {
-        helpers
-    }
-}
+var utils = {
+    helpers
+};
 
 module.exports = utils;
