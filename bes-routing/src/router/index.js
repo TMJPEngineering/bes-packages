@@ -1,8 +1,8 @@
 var _ = require('lodash');
 // var logger = require('bes-logger');
 var BaseController = require('./../controller');
-// var Middleware = require('bes-middleware');
 var helpers = require('bes-utils').helpers;
+var Middleware = helpers.Middleware;
 
 // BaseRouter object
 let BaseRouter = {
@@ -127,14 +127,14 @@ let BaseRouter = {
     // Route middlewares: Can add 1 or more middleware in a single route
     middleware: middlewares => {
         let groups = [];
-        // middlewares.forEach(middleware => {
-        //     let _middleware = new Middleware(middleware);
-        //     if (typeof _middleware == 'object') {
-        //         _middleware.forEach(function (callback) {
-        //             groups.push(callback);
-        //         });
-        //     }
-        // });
+        middlewares.forEach(middleware => {
+            let _middleware = new Middleware(middleware);
+            if (typeof _middleware == 'object') {
+                _middleware.forEach(function (callback) {
+                    groups.push(callback);
+                });
+            }
+        });
         return groups;
     },
     // When using the route group, always start with a `group` function then ends with the `endGroup` function
