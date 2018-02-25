@@ -1,0 +1,18 @@
+{
+  "name": "@bes/logger",
+  "version": "1.0.0",
+  "description": "Logger for bes.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jcmlumacad/bes-packages/tree/master/bes-logger"
+  },
+  "keywords": [
+    "log"
+  ],
+  "author": "John Conrad Lumacad <johnconradl18@gmail.com>",
+  "license": "MIT"
+}
