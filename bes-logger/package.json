@@ -1,5 +1,5 @@
 {
-  "name": "@jcmlumacad/bes-logger",
+  "name": "bes-logger",
   "version": "1.0.0",
   "description": "Logger for bes.",
   "main": "src/index.js",

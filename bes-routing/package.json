@@ -1,5 +1,5 @@
 {
-  "name": "@jcmlumacad/bes-routing",
+  "name": "bes-routing",
   "version": "1.0.0",
   "description": "Routing for bes",
   "main": "src/index.js",

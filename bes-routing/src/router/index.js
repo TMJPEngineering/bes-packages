@@ -1,8 +1,8 @@
 var _ = require('lodash');
-// var logger = require('@jcmlumacad/bes-logger');
+// var logger = require('bes-logger');
 var BaseController = require('./../controller');
-// var Middleware = require('@jcmlumacad/bes-middleware');
-var helpers = require('@jcmlumacad/bes-utils').helpers;
+// var Middleware = require('bes-middleware');
+var helpers = require('bes-utils').helpers;
 
 // BaseRouter object
 let BaseRouter = {
