@@ -1,8 +1,12 @@
 var _ = require('lodash');
-// var logger = require('bes-logger');
-var BaseController = require('./../controller');
+var path = require('path');
 var helpers = require('bes-utils').helpers;
+// var logger = require('bes-logger');
+
+var BaseController = require('./../controller');
+
 var Middleware = helpers.Middleware;
+var appPath = path.dirname(require.main.filename);
 
 // BaseRouter object
 let BaseRouter = {
@@ -44,7 +48,7 @@ let BaseRouter = {
         BaseRouter.config.set(controller, uri, BaseRouter.module, middlewares);
         let func = controller;
         if (typeof controller == 'string') {
-            func = new BaseController(`./../modules/${BaseRouter.router.module}/Controllers/${BaseRouter.router.controller}`, BaseRouter.router.str.pop());
+            func = new BaseController(`${appPath}/modules/${BaseRouter.router.module}/Controllers/${BaseRouter.router.controller}`, BaseRouter.router.str.pop());
         }
         let url = helpers.trimUri(BaseRouter.router.uri);
         let middleware = (BaseRouter.router.middlewares) ? BaseRouter.middleware(BaseRouter.router.middlewares) : BaseRouter.config.callback;
