@@ -53,8 +53,16 @@ let BaseRouter = {
         let url = helpers.trimUri(BaseRouter.router.uri);
         let middleware = (BaseRouter.router.middlewares) ? BaseRouter.middleware(BaseRouter.router.middlewares) : BaseRouter.config.callback;
         try {
-            BaseRouter.config.app[method](url, middleware, func);
+            BaseRouter.config.app[method](url, middleware, function (request, response) {
+                try {
+                    func(request, response)
+                } catch (error) {
+                    // TODO: ControllerException
+                    console.log('Controller exception:', error);
+                }
+            });
         } catch (e) {
+            // TODO: RouteException
             // logger(`Route Exception: ${e}`);
             console.log('Route Exception:', e);
         }

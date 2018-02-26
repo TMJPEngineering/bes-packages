@@ -14,5 +14,8 @@
     "log"
   ],
   "author": "John Conrad Lumacad <johnconradl18@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^2.3.1"
+  }
 }
