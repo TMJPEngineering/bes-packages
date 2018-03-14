@@ -1,9 +1,9 @@
 var csurf = require('csurf');
 
 var BaseVerifier = function (except, request, response, next) {
-    var url = request.originalUrl;
+    var path = request.route.path;
 
-    if (except.includes(url)) {
+    if (except.includes(path)) {
         return next();
     }
 
