@@ -53,9 +53,12 @@ let BaseRouter = {
         let url = helpers.trimUri(BaseRouter.router.uri);
         let middleware = (BaseRouter.router.middlewares) ? BaseRouter.middleware(BaseRouter.router.middlewares) : BaseRouter.config.callback;
         try {
-            BaseRouter.config.app[method](url, middleware, function (request, response) {
+            BaseRouter.config.app[method](url, middleware, function (req, res) {
                 try {
-                    func(request, response)
+                    if (req.csrfToken !== undefined) {
+                        res.cookie('XSRF-TOKEN', req.csrfToken());
+                    }
+                    func(req, res);
                 } catch (error) {
                     // TODO: ControllerException
                     console.log('Controller exception:', error);
@@ -93,9 +96,23 @@ let BaseRouter = {
             middlewares = _.union(middlewares, BaseRouter.allOptions.middleware);
         }
         let middleware = (middlewares) ? BaseRouter.middleware(middlewares) : BaseRouter.config.callback;
-        BaseRouter.config.app.get(uri, middleware, (req, res) => {
-            helpers.view(filename, res);
-        });
+        try {
+            BaseRouter.config.app.get(uri, middleware, (req, res) => {
+                try {
+                    if (req.csrfToken !== undefined) {
+                        res.cookie('XSRF-TOKEN', req.csrfToken());
+                    }
+                    helpers.view(filename, res);
+                } catch (error) {
+                    // TODO: ControllerException
+                    console.log('Controller exception:', error);
+                }
+            });
+        } catch (e) {
+            // TODO: RouteException
+            // logger(`Route Exception: ${e}`);
+            console.log('Route Exception:', e);
+        }
     },
     // Route resource is set of routes. It has `index`, `create`, `show`, `edit`, `store`, `update` and `destroy`.
     resource: (uri, controller, middlewares, options) => {

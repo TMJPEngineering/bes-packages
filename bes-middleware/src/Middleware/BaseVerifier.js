@@ -8,8 +8,7 @@ var BaseVerifier = function (except, request, response, next) {
     }
 
     var csrf = csurf({ cookie: true });
-    csrf(request, response, next);
-    response.cookie('XSRF-TOKEN', request.csrfToken());
+    return csrf(request, response, next);
 };
 
 module.exports = BaseVerifier;
