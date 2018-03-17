@@ -8,11 +8,8 @@ function File(_opts) {
     this.save = save;
 }
 
-function save(message) {
-    var filename = this.opts.filename;
-    if (!filename) return new Error('File not found');
-
-    var filePath = appPath + '/' + filename;
+function save(filePath, message) {
+    var filePath = appPath + '/' + filePath;
     var dirPath = path.dirname(filePath);
     checkDirectorySync(dirPath);
     fs.appendFileSync(filePath, message);

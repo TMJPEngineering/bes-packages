@@ -1,6 +1,25 @@
 var Logger = require('./../src/logger');
+var helpers = require('bes-utils').helpers;
+var storagePath = helpers.storagePath;
 
+/**
+* --------------------------------------------------------------------------
+* Logger Configuration
+* --------------------------------------------------------------------------
+*
+* Here you may configure the log settings for your application. Out of
+* the box, Bes uses bes-logger library. This gives
+* you a variety of powerful log handlers / formatters to utilize.
+*
+*/
 module.exports = {
+    /**
+     * Bes logger log
+     *
+     * Available Settings: "single", "daily"
+     */
+    log: 'single',
+
     /**
      * Bes logger levels
      * 
@@ -19,7 +38,7 @@ module.exports = {
      * Bes logger transports
      */
     transports: [
-        new Logger.transports.File({ filename: 'logs/error.log', level: 'error' }),
-        new Logger.transports.File({ filename: 'logs/combined.log' })
+        new Logger.transports.File({ filename: storagePath('logs/error.log'), level: 'error' }),
+        new Logger.transports.File({ filename: storagePath('logs/combined.log') })
     ]
 };

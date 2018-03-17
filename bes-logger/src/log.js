@@ -39,12 +39,21 @@ function _logMessage(args = new Object, func = new Function) {
 
     config.transports.forEach(function (File) {
         var level = File.opts.level;
+        var filePath = File.opts.filename;
+        if (!filePath) return new Error('File not found');
         if (!level) {
             level = config.level;
         }
+        if (config.log == 'daily') {
+            var date = new Date();
+            var filenameWithExt = filePath.replace(/^.*[\\\/]/, '');
+            var dirPath = path.dirname(filePath) + '/';
+            var filename = filenameWithExt.split('.').shift();
+            filePath = dirPath + filename + '-' + date.toLocaleDateString().split('/').join('-') + '.log';
+        }
 
         if (isDebugged == 'false' && func === debug) return;
-        if (levels[level] <= levels[func.name]) File.save(formattedText);
+        if (levels[level] <= levels[func.name]) File.save(filePath, formattedText);
     });
 }
 

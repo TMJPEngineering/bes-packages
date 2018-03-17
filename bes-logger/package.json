@@ -1,6 +1,6 @@
 {
   "name": "bes-logger",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Logger for bes.",
   "main": "src/index.js",
   "scripts": {
@@ -17,6 +17,7 @@
   "author": "John Conrad Lumacad <johnconradl18@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "bes-utils": "^1.0.6",
     "node-env-file": "^0.1.8"
   }
 }
