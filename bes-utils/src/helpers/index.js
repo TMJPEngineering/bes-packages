@@ -1,8 +1,8 @@
 var _ = require('lodash');
 var path = require('path');
-var root = path.dirname(require.main.filename);
+var mainPath = path.dirname(require.main.filename) + '/';
 var logger = require('bes-logger').logger;
-var Kernel = require(root + '/app/Http/Kernel');
+var Kernel = require(mainPath + 'app/Http/Kernel');
 
 function helpers() {
     return {
@@ -10,7 +10,10 @@ function helpers() {
         trimUri,
         view,
         Middleware,
-        logger: logger
+        logger,
+        resourcePath,
+        storagePath,
+        appPath
     }
 
     /**
@@ -35,24 +38,44 @@ function helpers() {
      */
     function view(file, response) {
         var filename = file.replace(/\./g, '/');
-        response.sendFile(root + '/resources/views/' + filename + '.html');
+        response.sendFile(resourcePath('views/' + filename + '.html'));
     }
 
     /**
      * Global middleware
      */
     function Middleware(value) {
-        var rootPath = root + '/';
         var middlewareGroups = [];
 
         if (_.has(Kernel.default.middlewareGroups, value)) {
             var middlewares = _.get(Kernel.default.middlewareGroups, value);
             middlewares.forEach(function (filePath) {
-                middlewareGroups.push(require(rootPath + filePath));
+                middlewareGroups.push(require(mainPath + filePath));
             });
         }
 
         return middlewareGroups;
+    }
+
+    /**
+     * Resource Path
+     */
+    function resourcePath(filename = '') {
+        return mainPath + 'resource/' + filename;
+    }
+
+    /**
+     * Storage Path
+     */
+    function storagePath(filename = '') {
+        return mainPath + 'storage/' + filename;
+    }
+
+    /**
+     * App Path
+     */
+    function appPath(filename = '') {
+        return mainPath + 'app/' + filename;
     }
 }
 
