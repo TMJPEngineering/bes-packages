@@ -1,6 +1,5 @@
 var fs = require('fs');
 var path = require('path');
-var appPath = path.dirname(require.main.filename);
 
 function File(_opts) {
     // TODO: Checker for options
@@ -9,7 +8,6 @@ function File(_opts) {
 }
 
 function save(filePath, message) {
-    var filePath = appPath + '/' + filePath;
     var dirPath = path.dirname(filePath);
     checkDirectorySync(dirPath);
     fs.appendFileSync(filePath, message);

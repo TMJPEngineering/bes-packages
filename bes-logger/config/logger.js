@@ -1,6 +1,4 @@
 var Logger = require('./../src/logger');
-var helpers = require('bes-utils').helpers;
-var storagePath = helpers.storagePath;
 
 /**
 * --------------------------------------------------------------------------
@@ -38,7 +36,7 @@ module.exports = {
      * Bes logger transports
      */
     transports: [
-        new Logger.transports.File({ filename: storagePath('logs/error.log'), level: 'error' }),
-        new Logger.transports.File({ filename: storagePath('logs/combined.log') })
+        new Logger.transports.File({ filename: 'logs/error.log', level: 'error' }),
+        new Logger.transports.File({ filename: 'logs/combined.log' })
     ]
 };
