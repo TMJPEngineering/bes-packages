@@ -1,6 +1,7 @@
 var _ = require('lodash');
 var path = require('path');
 var root = path.dirname(require.main.filename);
+var logger = require('bes-logger').logger;
 var Kernel = require(root + '/app/Http/Kernel');
 
 function helpers() {
@@ -8,7 +9,8 @@ function helpers() {
         toController,
         trimUri,
         view,
-        Middleware
+        Middleware,
+        logger: logger
     }
 
     /**
