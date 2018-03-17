@@ -1,6 +1,14 @@
-module.exports = function (message, type) {
-  if (type === undefined) {
-    type = 'log'
-  }
-  message = new Date().toLocaleString() + ' [' + type.toUpperCase() + ']: ' + message
+var log = require('./log');
+var levels = require('./levels');
+
+var logger = {
+    levels: levels,
+    info: log.info,
+    warn: log.warn,
+    debug: log.debug,
+    error: log.error
+};
+
+module.exports = {
+    logger: logger
 }
