@@ -2,7 +2,6 @@ var _ = require('lodash');
 var path = require('path');
 var mainPath = path.dirname(require.main.filename) + '/';
 var logger = require('bes-logger').logger;
-var Kernel = require(mainPath + 'app/Http/Kernel');
 
 function helpers() {
     return {
@@ -45,6 +44,7 @@ function helpers() {
      * Global middleware
      */
     function Middleware(value) {
+        var Kernel = require(mainPath + 'app/Http/Kernel');
         var middlewareGroups = [];
 
         if (_.has(Kernel.default.middlewareGroups, value)) {
