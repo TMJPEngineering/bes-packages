@@ -16,6 +16,7 @@
   "author": "John Conrad Lumacad <johnconradl18@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "bes-logger": "^1.0.0",
     "bes-utils": "^1.0.0",
     "lodash": "^4.17.5"
   }

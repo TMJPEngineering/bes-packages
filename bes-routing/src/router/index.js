@@ -1,7 +1,7 @@
 var _ = require('lodash');
 var path = require('path');
 var helpers = require('bes-utils').helpers;
-// var logger = require('bes-logger');
+var logger = require('bes-logger').logger;
 
 var BaseController = require('./../controller');
 
@@ -61,13 +61,12 @@ let BaseRouter = {
                     func(req, res);
                 } catch (error) {
                     // TODO: ControllerException
-                    console.log('Controller exception:', error);
+                    logger.error('Controller exception:', error);
                 }
             });
         } catch (e) {
             // TODO: RouteException
-            // logger(`Route Exception: ${e}`);
-            console.log('Route Exception:', e);
+            logger.error('Route Exception:', e);
         }
     },
     // Route all - wrapper for app.all
@@ -105,13 +104,12 @@ let BaseRouter = {
                     helpers.view(filename, res);
                 } catch (error) {
                     // TODO: ControllerException
-                    console.log('Controller exception:', error);
+                    logger.error('Controller exception:', error);
                 }
             });
         } catch (e) {
             // TODO: RouteException
-            // logger(`Route Exception: ${e}`);
-            console.log('Route Exception:', e);
+            logger.error('Route Exception:', e);
         }
     },
     // Route resource is set of routes. It has `index`, `create`, `show`, `edit`, `store`, `update` and `destroy`.
