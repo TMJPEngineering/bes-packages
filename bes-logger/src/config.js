@@ -1,7 +1,7 @@
 var fs = require('fs');
 var path = require('path');
 var appPath = path.dirname(require.main.filename);
-var logger = fs.existsSync(appPath + '/config/logger') ? require(appPath + '/config/logger') : {};
+var logger = fs.existsSync(appPath + '/config/logger.js') ? require(appPath + '/config/logger').default : {};
 var opts = require('./../config/logger');
 
 if (logger.log) opts.log = logger.log;
