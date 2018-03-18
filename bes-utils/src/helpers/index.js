@@ -61,7 +61,7 @@ function helpers() {
      * Resource Path
      */
     function resourcePath(filename = '') {
-        return mainPath + 'resource/' + filename;
+        return mainPath + 'resources/' + filename;
     }
 
     /**
