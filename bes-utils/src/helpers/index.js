@@ -1,3 +1,4 @@
+var fs = require('fs');
 var _ = require('lodash');
 var path = require('path');
 var mainPath = path.dirname(require.main.filename) + '/';
@@ -12,7 +13,8 @@ function helpers() {
         logger,
         resourcePath,
         storagePath,
-        appPath
+        appPath,
+        modules: modules()
     }
 
     /**
@@ -76,6 +78,27 @@ function helpers() {
      */
     function appPath(filename = '') {
         return mainPath + 'app/' + filename;
+    }
+
+    /**
+     * List of existing modules
+     */
+    function modules() {
+        var modulePath = mainPath + 'modules/';
+        var isDirectory = function (source) {
+            return fs.lstatSync(source).isDirectory();
+        };
+        var getDirectories = function (source) {
+            return fs.readdirSync(source).map(function (name) {
+                return path.join(source, name);
+            }).filter(isDirectory);
+        };
+        var obj = {};
+        getDirectories(modulePath).map(function (directory) {
+            var folder = path.basename(path.dirname(directory + '/dump.txt'));
+            modules[folder.toLowerCase()] = folder;
+        });
+        return obj;
     }
 }
 
