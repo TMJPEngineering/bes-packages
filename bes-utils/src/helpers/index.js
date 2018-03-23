@@ -96,7 +96,7 @@ function helpers() {
         var obj = {};
         getDirectories(modulePath).map(function (directory) {
             var folder = path.basename(path.dirname(directory + '/dump.txt'));
-            modules[folder.toLowerCase()] = folder;
+            obj[folder.toLowerCase()] = folder;
         });
         return obj;
     }
