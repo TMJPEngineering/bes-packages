@@ -1,0 +1,19 @@
+{
+  "name": "bes-seeder",
+  "version": "1.0.0",
+  "description": "Seeder for bes.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jcmlumacad/bes-packages/tree/master/bes-seeder"
+  },
+  "keywords": [
+    "seeder",
+    "database"
+  ],
+  "author": "John Conrad Lumacad <johnconradl18@gmail.com>",
+  "license": "MIT"
+}
