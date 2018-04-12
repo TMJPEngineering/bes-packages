@@ -1,12 +1,15 @@
-class Seeder {
-    constructor (modelInstance) {
-        this.model = modelInstance
-    }
+function Seeder (modelInstance) {
+    if (!(this instanceof Seeder))
+        return new Seeder(modelInstance);
 
-    async call (seederInstance) {
-        console.log(`Seeding ${seederInstance.constructor.name}`)
+    this.model = modelInstance;
+}
+
+Seeder.prototype = {
+    call: async function (seederInstance) {
+        console.log('Seeding:', seederInstance.constructor.name)
         await seederInstance.run()
-        console.log(`Seeded: ${seederInstance.constructor.name}`)
+        console.log('Seeded:', seederInstance.constructor.name)
     }
 }
 

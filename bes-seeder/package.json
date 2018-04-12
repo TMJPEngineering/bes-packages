@@ -1,6 +1,6 @@
 {
   "name": "bes-seeder",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Seeder for bes.",
   "main": "src/index.js",
   "scripts": {
