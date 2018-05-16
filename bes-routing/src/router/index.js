@@ -58,15 +58,17 @@ let BaseRouter = {
                     if (req.csrfToken !== undefined) {
                         res.cookie('XSRF-TOKEN', req.csrfToken());
                     }
-                    func(req, res);
+                    global.request = req;
+                    global.response = res;
+                    func.call(this);
                 } catch (error) {
                     // TODO: ControllerException
-                    logger.error('Controller exception:', error);
+                    logger.error(`Controller exception: ${error}`);
                 }
             });
         } catch (e) {
             // TODO: RouteException
-            logger.error('Route Exception:', e);
+            logger.error(`Route Exception: ${e}`);
         }
     },
     // Route all - wrapper for app.all

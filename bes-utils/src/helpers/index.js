@@ -52,7 +52,9 @@ function helpers() {
         if (_.has(Kernel.default.middlewareGroups, value)) {
             var middlewares = _.get(Kernel.default.middlewareGroups, value);
             middlewares.forEach(function (filePath) {
-                middlewareGroups.push(require(mainPath + filePath));
+                var middleware = require(mainPath + filePath).default;
+                var instance = new middleware;
+                middlewareGroups.push(instance.handle);
             });
         }
 
